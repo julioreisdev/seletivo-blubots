@@ -10,7 +10,7 @@ export default function ChatAssistent() {
 }
 
 const Container = styled.div`
-  width: 70%;
+  width: 75%;
   min-height: 100vh;
 
   @media (min-width: 0) and (max-width: 820px) {
