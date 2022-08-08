@@ -1,7 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import context from "../Context/Context";
 import axios from "axios";
 import styled from "styled-components";
+
+let ws = new WebSocket("wss://test-tsuru-api.herokuapp.com/");
 
 export default function ChatMessages() {
   const {
@@ -12,6 +14,8 @@ export default function ChatMessages() {
     promiseFinish,
     setPromiseFinish,
   } = useContext(context);
+
+  const endRef = useRef(null);
 
   useEffect(() => {
     const promise = axios.get("https://test-tsuru-api.herokuapp.com/helpdesk");
@@ -33,6 +37,23 @@ export default function ChatMessages() {
       });
   }, []);
 
+  useEffect(() => {
+    endRef.current?.scrollIntoView();
+  }, [messages]);
+
+  useEffect(() => {
+    ws.onopen = (event) => {
+      console.log("CONECTED WITH WEBSOCKET");
+    };
+    ws.onmessage = (message) => {
+      setMessages([...messages, JSON.parse(message.data)]);
+    };
+    ws.onclose = (event) => {
+      console.log("DESCONECTED");
+      ws = new WebSocket("wss://test-tsuru-api.herokuapp.com/");
+    };
+  });
+
   function Messages(props) {
     return (
       <Message
@@ -51,6 +72,7 @@ export default function ChatMessages() {
             <Messages key={m.id} sent={m.sent} content={m.content} />
           ))
         : "LOADING..."}
+      <div ref={endRef} />
     </Container>
   );
 }

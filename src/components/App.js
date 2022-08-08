@@ -7,9 +7,10 @@ import context from "./Context/Context";
 import { useState } from "react";
 
 export default function App() {
-  const [messages, setMessages] = useState();
+  const [messages, setMessages] = useState([]);
   const [assistent, setAssistent] = useState();
   const [promiseFinish, setPromiseFinish] = useState(false);
+  const [textMessage, setTextMessage] = useState("");
 
   return (
     <BrowserRouter>
@@ -21,6 +22,8 @@ export default function App() {
           setAssistent,
           promiseFinish,
           setPromiseFinish,
+          textMessage,
+          setTextMessage,
         }}
       >
         <Routes>

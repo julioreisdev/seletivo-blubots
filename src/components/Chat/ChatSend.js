@@ -1,6 +1,10 @@
 import styled from "styled-components";
+import context from "../Context/Context";
+import { useContext } from "react";
 
 export default function ChatSend() {
+  const { textMessage, setTextMessage } = useContext(context);
+
   return (
     <Container>
       <form>
@@ -10,6 +14,8 @@ export default function ChatSend() {
           name="message"
           required
           placeholder="Escreva aqui..."
+          value={textMessage}
+          onChange={(e) => setTextMessage(e.target.value)}
         />
         <button>
           <ion-icon name="send"></ion-icon>
@@ -38,8 +44,8 @@ const Container = styled.div`
       font-size: 1.5rem;
       color: #fff;
       padding: 1.5rem 60px 1.5rem 1rem;
-      background-color: #086A87;
-      border: 1px solid #086A87;
+      background-color: #086a87;
+      border: 1px solid #086a87;
 
       ::placeholder {
         color: #fff;
@@ -54,7 +60,7 @@ const Container = styled.div`
       top: 2px;
       right: 2px;
       bottom: 2px;
-      background-color: #086A87;
+      background-color: #086a87;
 
       ion-icon {
         font-size: 1.8rem;

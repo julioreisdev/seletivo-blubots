@@ -4,20 +4,6 @@ import ChatHeader from "./ChatHeader";
 import ChatMessages from "./ChatMessages";
 
 export default function ChatAssistent() {
-  let ws = new WebSocket("wss://test-tsuru-api.herokuapp.com/");
-  ws.onopen = (event) => {
-    console.log("CONECTED WITH WEBSOCKET");
-  };
-  ws.onmessage = (message) => {
-    console.log(JSON.parse(message.data));
-  };
-  ws.onerror = (error) => {
-    console.log("ERROR", error);
-  };
-  ws.onclose = (event) => {
-    ws = new WebSocket("wss://test-tsuru-api.herokuapp.com/");
-  };
-
   return (
     <Container>
       <ChatHeader />
