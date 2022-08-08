@@ -23,6 +23,7 @@ const Container = styled.div`
   position: fixed;
   bottom: 0;
   width: 75%;
+  box-shadow: 0 -2px 5px gray;
 
   @media (min-width: 0) and (max-width: 820px) {
     width: 100%;

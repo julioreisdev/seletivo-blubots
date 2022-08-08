@@ -21,6 +21,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
 
   @media (min-width: 0) and (max-width: 820px) {
     display: none;
@@ -54,10 +55,9 @@ const Footer = styled.div`
   position: fixed;
   bottom: 0;
   width: 25%;
-  padding: 0 1rem 1rem 1rem;
+  padding: 0 1rem 2rem 1rem;
 
   p {
     font-size: 1rem;
-    text-align: left;
   }
 `;

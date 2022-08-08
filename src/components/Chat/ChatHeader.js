@@ -1,23 +1,32 @@
 import styled from "styled-components";
+import context from "../Context/Context";
+import { useContext } from "react";
+import avatar from "../../assets/img/avatar.jpg";
 
 export default function ChatHeader() {
+  const { assistent, promiseFinish } = useContext(context);
+
   return (
     <Container>
       <div>
-        <img
-          src="https://images.unsplash.com/photo-1618614944895-fc409a83ad80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
-          alt="Profile"
-        />
-        <p>Fulano de Tal</p>
+        <img src={promiseFinish ? assistent.avatar : avatar} alt="Profile" />
+        <p>{promiseFinish ? assistent.name : "..."}</p>
       </div>
     </Container>
   );
 }
 
 const Container = styled.div`
-  background-color: #086A87;
+  background-color: #086a87;
   color: #fff;
   font-weight: bold;
+  box-shadow: 0 2px 5px gray;
+  position: fixed;
+  width: 75%;
+
+  @media (min-width: 0) and (max-width: 820px) {
+    width: 100%;
+  }
 
   div {
     display: flex;
