@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef } from "react";
 import context from "../Context/Context";
 import axios from "axios";
 import styled from "styled-components";
+import Loader from "../Loader/Loader";
 
 let ws = new WebSocket("wss://test-tsuru-api.herokuapp.com/");
 
@@ -67,11 +68,13 @@ export default function ChatMessages() {
 
   return (
     <Container>
-      {promiseFinish
-        ? messages.map((m) => (
-            <Messages key={m.id} sent={m.sent} content={m.content} />
-          ))
-        : "LOADING..."}
+      {promiseFinish ? (
+        messages.map((m) => (
+          <Messages key={m.id} sent={m.sent} content={m.content} />
+        ))
+      ) : (
+        <Loader w="40" h="20" />
+      )}
       <div ref={endRef} />
     </Container>
   );

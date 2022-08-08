@@ -1,13 +1,30 @@
 import styled from "styled-components";
 import context from "../Context/Context";
 import { useContext } from "react";
+import axios from "axios";
 
 export default function ChatSend() {
   const { textMessage, setTextMessage } = useContext(context);
 
+  function submit(e) {
+    e.preventDefault();
+    const promise = axios.post(
+      "https://test-tsuru-api.herokuapp.com/helpdesk/sendMessage",
+      { content: textMessage }
+    );
+
+    promise
+      .then((res) => {
+        setTextMessage("");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <Container>
-      <form>
+      <form onSubmit={(e) => submit(e)}>
         <input
           id="message"
           type="text"
