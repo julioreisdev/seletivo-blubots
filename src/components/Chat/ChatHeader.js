@@ -15,7 +15,7 @@ export default function ChatHeader() {
 }
 
 const Container = styled.div`
-  background-color: #045fb4;
+  background-color: #086A87;
   color: #fff;
   font-weight: bold;
 

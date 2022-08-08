@@ -37,8 +37,8 @@ const Container = styled.div`
       font-size: 1.5rem;
       color: #fff;
       padding: 1.5rem 60px 1.5rem 1rem;
-      background-color: #045fb4;
-      border: 1px solid #045fb4;
+      background-color: #086A87;
+      border: 1px solid #086A87;
 
       ::placeholder {
         color: #fff;
@@ -53,7 +53,7 @@ const Container = styled.div`
       top: 2px;
       right: 2px;
       bottom: 2px;
-      background-color: #045fb4;
+      background-color: #086A87;
 
       ion-icon {
         font-size: 1.8rem;
