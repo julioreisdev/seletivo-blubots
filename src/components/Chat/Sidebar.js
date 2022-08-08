@@ -14,7 +14,7 @@ export default function Sidebar() {
 }
 
 const Container = styled.div`
-  background-color: #e0ecf8;
+  background-color: #f2f2f2;
   padding: 1rem;
   width: 25%;
   min-height: 100vh;
